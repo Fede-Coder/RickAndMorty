@@ -5,7 +5,7 @@ const pulse = keyframes`
       transform: scale(1);
    }
    to {
-      transform: scale(1.05);
+      transform: scale(1.02);
    }
 `
 
@@ -62,7 +62,7 @@ const DivAvatar = styled.div`
    }
 `
 const COLOR_GENDER = {
-   MALE: {MAIN:'#0096f0', BORDER:'#007dcc', SEPARATOR: '#007dcc'},
+   MALE: {MAIN:'#64bfe3', BORDER:'#4e94af', SEPARATOR: '#519cb9'},
    FEMALE: {MAIN:'#b73377', BORDER:'#862256', SEPARATOR: '#9b2160'}
 }
 
