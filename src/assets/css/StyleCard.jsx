@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const pulse = keyframes`
+   from {
+      transform: scale(1);
+   }
+   to {
+      transform: scale(1.05);
+   }
+`
 
 const DivCard = styled.div`
    background-color: #dfdfdf;
@@ -8,6 +17,13 @@ const DivCard = styled.div`
 
    div#button {
       text-align: right;
+   }
+
+   &:hover {
+      animation: ${pulse} 1s infinite;
+      animation-timing-function: ease-out;
+      animation-direction: alternate;
+      animation-play-state: running;
    }
 `
 const ButtonCard = styled.button`
