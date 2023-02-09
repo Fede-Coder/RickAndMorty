@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 const DivCard = styled.div`
+   display: inline-block;
+   margin: 10px;
    background-color: #dfdfdf;
    padding: 0 10px;
    border-radius: 10px;
