@@ -2,7 +2,7 @@ import './App.css'
 // import Card from './components/Card'
 import Cards from './components/Cards'
 import React from 'react'
-import Nav from './components/Nav'
+import Nav from './components/Nav/Nav'
 
 function App () {
 
@@ -41,14 +41,9 @@ function App () {
   return (
     <div className='App'>      
       <>
-        <Nav handleAddChar={handleAddChar} handleChange={handleChange}/>
+        <Nav handleAddChar={handleAddChar} handleChange={handleChange} />
       </>
-      <div id="cards">
-        <Cards
-          characters={characters}
-          onClose={onClose}
-        />
-      </div>
+        <Cards characters={characters} onClose={onClose} />
     </div>
   )
 }

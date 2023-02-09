@@ -1,6 +1,6 @@
 import React from 'react';
-import SearchBar from './SearchBar'
-import { DivNav } from '../assets/css/StyleNav';
+import SearchBar from '../SearchBar/SearchBar'
+import { DivNav } from './StyleNav';
 
 export default function Nav(props) {//props.handleAddChar  (funcion), props.handleChange
     return (

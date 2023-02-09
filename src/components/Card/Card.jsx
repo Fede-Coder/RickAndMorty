@@ -1,4 +1,4 @@
-import {DivCard, ButtonCard, DivAvatar, DivInfo, person, gender} from '../assets/css/StyleCard'
+import {DivCard, ButtonCard, DivAvatar, DivInfo, person, gender} from './StyleCard'
 
 export default function Card(props) {
    return (
