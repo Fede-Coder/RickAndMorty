@@ -42,11 +42,11 @@ const SearchButton = styled.button`
 `
 
 
-export default function SearchBar(props) {
+export default function SearchBar(props) {//props.onSearch (funcion de handleAddChar), props.handleChange
    return (
       <SearchDiv>
-         <SearchInput type='search' />
-         <SearchButton onClick={() => props.onSearch(document.querySelector('input').value)}><i className="fa-solid fa-plus"></i> Agregar</SearchButton>
+         <SearchInput type='search' onChange={props.handleChange}/>
+         <SearchButton onClick={props.onSearch}><i className="fa-solid fa-plus"></i> Agregar</SearchButton>
       </SearchDiv>
    );
 }
