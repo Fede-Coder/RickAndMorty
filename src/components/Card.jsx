@@ -4,7 +4,7 @@ export default function Card(props) {
    return (
       <DivCard>
          <div id="button">
-            <ButtonCard onClick={props.onClose}><i className="fa-solid fa-xmark"></i></ButtonCard>
+            <ButtonCard onClick={props.onClose} value={props.id}><i className="fa-solid fa-xmark"></i></ButtonCard>
          </div>
          <DivAvatar>
             <h2>{props.name}</h2>

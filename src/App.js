@@ -14,7 +14,12 @@ function App () {
       .then((res) => res.json())
       .then((data) => 
         {
-          data.name?setCharacters([...characters, data]):alert('No hay personajes con ese ID')
+          data.name
+          ?
+          (characters.some(char => char.id === data.id))?alert('ya existe'):setCharacters([...characters, data])
+          //(characters.includes(data.id))?alert('ya existe'):setCharacters([...characters, data])
+          :
+          alert('No hay personajes con ese ID')
         }
       );
   }
@@ -29,7 +34,9 @@ function App () {
     setInputChar(e.target.value)
   }
 
-  console.log(characters);
+  const onClose = (e) => {
+    setCharacters(characters.filter(char => char.id !== Number(e.currentTarget.value)))
+  }
 
   return (
     <div className='App'>      
@@ -39,6 +46,7 @@ function App () {
       <div id="cards">
         <Cards
           characters={characters}
+          onClose={onClose}
         />
       </div>
     </div>
