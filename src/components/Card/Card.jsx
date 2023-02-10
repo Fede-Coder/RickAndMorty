@@ -1,8 +1,9 @@
-import {DivCard, ButtonCard, DivAvatar, DivInfo, person, gender} from './StyleCard'
+import {DivCard, LinkDetail, ButtonCard, DivAvatar, DivInfo, person, gender} from './StyleCard'
 
 export default function Card(props) {
    return (
-      <DivCard>
+      <DivCard >
+         <LinkDetail to={`/detail/${props.id}`}><i className="fa-solid fa-info"></i></LinkDetail>
          <div id="button">
             <ButtonCard onClick={props.onClose} value={props.id}><i className="fa-solid fa-xmark"></i></ButtonCard>
          </div>

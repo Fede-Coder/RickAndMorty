@@ -1,8 +1,12 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
 // import Card from './components/Card'
 import Cards from './components/Cards'
 import React from 'react'
 import Nav from './components/Nav/Nav'
+import About from './components/About/About'
+import Inicio from './components/Inicio/Inicio';
+import Detail from './components/Detail/Detail';
 
 function App () {
 
@@ -39,11 +43,14 @@ function App () {
   }
 
   return (
-    <div className='App'>      
-      <>
-        <Nav handleAddChar={handleAddChar} handleChange={handleChange} />
-      </>
-        <Cards characters={characters} onClose={onClose} />
+    <div className='App'>
+      <Nav handleAddChar={handleAddChar} handleChange={handleChange} />
+      <Routes>
+        <Route path='/' element={<Inicio />} />
+        <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+        <Route path='/detail/:detailId' element={<Detail />} />
+        <Route path='/about' element={<About />} />
+      </Routes>
     </div>
   )
 }

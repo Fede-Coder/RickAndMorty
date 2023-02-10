@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const DivCard = styled.div`
@@ -12,6 +13,23 @@ const DivCard = styled.div`
       text-align: right;
    }
 `
+
+const LinkDetail = styled(Link)`
+   float: left;
+   padding: 6px 15px;
+   margin: 5px 0 10px 0;
+   background-color: #2780f5;
+   border-bottom: 5px solid #206dd1;
+   border-radius: 10px;
+   color: white;
+   transition: 0.2s all ease-out;
+
+   &:hover {      
+      background-color: #4797ff;
+      border-bottom: 5px solid #3e82db;
+   }
+`
+
 const ButtonCard = styled.button`
    background-color: #e70000;
    padding: 6px 10px;
@@ -85,6 +103,7 @@ const gender = function(props)  {return props.gender === 'Male' ? <i className="
 
 export {
     DivCard,
+    LinkDetail,
     ButtonCard,
     DivAvatar,
     DivInfo,

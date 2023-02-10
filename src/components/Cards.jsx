@@ -7,7 +7,8 @@ export default function Cards(props) {
          {
             characters.map((character, index) => 
                <Card key={index} id={character.id} name={character.name} species={character.species} gender={character.gender} image={character.image} onClose={props.onClose} />
-            )}
+            )
+         }
       </>
    );
 }
