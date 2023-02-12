@@ -1,17 +1,24 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css'
-// import Card from './components/Card'
-import Cards from './components/Cards'
 import React from 'react'
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import './App.css'
+//import Inicio from './components/Inicio/Inicio';
+// import Card from './components/Card'
 import Nav from './components/Nav/Nav'
-import About from './components/About/About'
-import Inicio from './components/Inicio/Inicio';
+import Form from './components/Form/Form'
+import Cards from './components/Cards'
 import Detail from './components/Detail/Detail';
+import About from './components/About/About'
 
 function App () {
 
   const [characters, setCharacters] = React.useState([]);
   const [inputChar, setInputChar] = React.useState('');
+
+  const navigate = useNavigate();
+  const [access, setAccess] = React.useState(false);
+  const username = 'ejemplo@gmail.com';
+  const password = '1password';
+
 
   const onSearch = (id) => {
     fetch(`https://rickandmortyapi.com/api/character/${id}`)
@@ -29,8 +36,6 @@ function App () {
   }
 
   const handleAddChar = () => {
-    //setCharacters([...characters, ...chars.filter(char => char.id == inputChar)])
-    //setCharacters(characters.concat(chars.filter(char => char.id == inputChar)))
     onSearch(inputChar)
   }
 
@@ -42,11 +47,25 @@ function App () {
     setCharacters(characters.filter(char => char.id !== Number(e.currentTarget.value)))
   }
 
+  function login(userData) {
+    if(userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate('/home');
+    } else {
+      alert('Error login')
+    }
+  }
+
+  React.useEffect(() => {
+    !access && navigate('/')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [access]);
+
   return (
     <div className='App'>
       <Nav handleAddChar={handleAddChar} handleChange={handleChange} />
       <Routes>
-        <Route path='/' element={<Inicio />} />
+        <Route path='/' element={<Form login={login} />} />
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
         <Route path='/detail/:detailId' element={<Detail />} />
         <Route path='/about' element={<About />} />

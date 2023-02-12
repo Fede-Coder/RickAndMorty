@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const DivNav = styled.div`
     display: flex;
@@ -8,6 +9,52 @@ const DivNav = styled.div`
     padding: 10px 0;
 `
 
+const DivMenu = styled.div`
+    margin: 10px 10px;
+`
+
+const ANavLink = styled(NavLink)`
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+    background-color: #868686;
+    text-decoration: none;
+    transition: 100ms all linear;
+    position: relative;
+
+    &.active {
+        background-color: #cfcfcf;
+        color: #252525;
+    }
+
+    &.active:after {
+        transform: scaleX(1);
+    }
+
+    &:hover {        
+        background-color: #cfcfcf;
+        color: #252525;
+    }
+
+    &:after {
+        content: '';
+        width: 100%;
+        transform: scaleX(0);
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        background-color: #0051fffb;
+        transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
+        position: absolute;
+    }
+
+    &:hover:after {
+        transform: scaleX(1);
+    }
+`
+
 export {
     DivNav,
+    DivMenu,
+    ANavLink
 }
