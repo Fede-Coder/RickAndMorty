@@ -6,12 +6,13 @@ export function validation(inputs) {
 
     if(!inputs.username) {
         errors.username = 'Se requiere un nombre de usuario'
-    }
-    if(!regexEmail.test(inputs.username)) {
-        errors.username = 'Debe ser un correo electrónico'
-    }
-    if(inputs.username.length > 35) {
-        errors.username = 'Debe ser menos de 35 caracteres'
+    } else {
+        if(!regexEmail.test(inputs.username)) {
+            errors.username = 'Debe ser un correo electrónico'
+        }
+        if(inputs.username.length > 35) {
+            errors.username = 'Debe ser menos de 35 caracteres'
+        }
     }
 
     if(!regexPassword.test(inputs.password)){

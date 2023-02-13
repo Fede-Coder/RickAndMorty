@@ -53,8 +53,26 @@ const ANavLink = styled(NavLink)`
     }
 `
 
+const NavButton = styled.button`
+    margin-right: 10px;
+    font-size: 25px;
+    background-color: #ff4343;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0 20px;
+    transition: 0.1s all ease-out;
+    cursor: pointer;
+    
+    &:hover {
+        background-color: #888888;
+        transition: 0.1s all ease-out;
+    }
+`
+
 export {
     DivNav,
     DivMenu,
-    ANavLink
+    ANavLink,
+    NavButton,
 }

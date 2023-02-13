@@ -44,6 +44,12 @@ const FormInput = styled.input`
     outline: none;
     font-family: 'Montserrat';
     font-weight: 600;
+    transition: 0.1s all ease-out;
+    border-radius: 10px;
+
+    &:focus {
+        box-shadow: 0px 3px #0db938;
+    }
 `
 
 const FormButton = styled.button`

@@ -33,12 +33,13 @@ export default function Form(props) {
         <FormDivContainer>
             <FormBoxLogin>
                 <FormDivBG/>
-                <FormForm onSubmit={handleSubmit}>
+                <FormForm onSubmit={handleSubmit} autoComplete="off">
+                    <h1>Rick & Morty</h1>
                     <FormDivLogin>
                         <FormInput type={'text'} name={'username'} value={userData.username} placeholder={'Username'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>
                     <FormDivLogin>
-                        <FormInput type={'text'} name={'password'} value={userData.password} placeholder={'Passsword'} onChange={handleInputChange}></FormInput>
+                        <FormInput type={'text'} name={'password'} value={userData.password} placeholder={'Password'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>                    
                     <FormButton>Login</FormButton>
                     {(Object.keys(errors).length > 0)

@@ -56,6 +56,11 @@ function App () {
     }
   }
 
+  function logout() {
+    setAccess(false);
+    navigate('/')
+  }
+
   React.useEffect(() => {
     !access && navigate('/')
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,7 +68,7 @@ function App () {
 
   return (
     <div className='App'>
-      <Nav handleAddChar={handleAddChar} handleChange={handleChange} />
+      <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />
       <Routes>
         <Route path='/' element={<Form login={login} />} />
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
