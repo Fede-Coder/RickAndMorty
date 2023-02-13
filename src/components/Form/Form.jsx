@@ -1,11 +1,11 @@
 import React from "react";
-import { FormBoxLogin, FormButton, FormDivBG, FormDivContainer, FormForm, FormInput, FormDivLogin} from "./StyleForm";
+import { FormBoxLogin, FormButton, FormDivBG, FormDivContainer, FormForm, FormInput, FormDivLogin, FormDivError, FormP} from "./StyleForm";
 import { validation } from "./validation";
 
 
 export default function Form(props) {
     const [userData, setUserData] = React.useState({ username: '', password: '' });
-    const [errors, setErrors] = React.useState({ username: '', password: ''});
+    const [errors, setErrors] = React.useState({ });
 
     const handleInputChange = (e) => {
         setUserData({...userData, [e.target.name]: e.target.value});
@@ -21,10 +21,14 @@ export default function Form(props) {
         e.preventDefault();
         if(Object.keys(errors).length === 0) {
             props.login(userData)
+        } else {
+            //Modificar
+            alert('Error!')
         }
     }
 
     console.log(errors);
+    console.log(Object.keys(errors));
     return (
         <FormDivContainer>
             <FormBoxLogin>
@@ -36,7 +40,17 @@ export default function Form(props) {
                     <FormDivLogin>
                         <FormInput type={'text'} name={'password'} value={userData.password} placeholder={'Passsword'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>                    
-                    <FormButton>Sign In</FormButton>
+                    <FormButton>Login</FormButton>
+                    {(Object.keys(errors).length > 0)
+                    ? 
+                    <FormDivError>
+                        <ul>
+                            <FormP error={errors.username}>{errors.username}</FormP>
+                            <FormP error={errors.password}>{errors.password}</FormP>
+                        </ul>
+                    </FormDivError> 
+                    : ''
+                    }
                 </FormForm>
             </FormBoxLogin>
         </FormDivContainer>

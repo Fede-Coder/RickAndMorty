@@ -32,7 +32,7 @@ const FormForm = styled.form`
 `
 
 const FormDivLogin = styled.div`
-    margin: 15px 0
+    margin: 15px 0;
 `
 
 const FormInput = styled.input`
@@ -65,6 +65,20 @@ const FormButton = styled.button`
     }
 `
 
+const FormDivError = styled.div`
+    text-align: start;
+    margin-top: 10px;
+    width: 80%;
+    margin: 15px auto;
+    padding: 2px 10px;
+    background-color: #ffcbc4;
+`
+
+const FormP = styled.li`
+    color: #e92d2d;
+    display: ${props => props.error === undefined ? 'none' : 'flow-root list-item'};
+`
+
 export {
     FormDivContainer,
     FormBoxLogin,
@@ -72,5 +86,7 @@ export {
     FormForm,
     FormDivLogin,
     FormInput,
-    FormButton
+    FormButton,
+    FormDivError,
+    FormP,
 }
