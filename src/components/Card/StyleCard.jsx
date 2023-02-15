@@ -54,6 +54,17 @@ const ButtonCard = styled.button`
 
 const DivAvatar = styled.div`
    position: relative;
+   button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      border: none;
+      background-color: #b4b4b4;
+      border-radius: 10px;
+      padding: 1px 2px;
+      font-size: 28px;
+      cursor: pointer;
+   }
    h2 {
       position: absolute;
       bottom: 0;

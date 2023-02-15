@@ -26,9 +26,7 @@ export default function Form(props) {
             alert('Error!')
         }
     }
-
-    console.log(errors);
-    console.log(Object.keys(errors));
+    
     return (
         <FormDivContainer>
             <FormBoxLogin>

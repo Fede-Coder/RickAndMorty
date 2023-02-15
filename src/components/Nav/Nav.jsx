@@ -13,6 +13,7 @@ export default function Nav(props) {//props.handleAddChar  (funcion), props.hand
            <DivNav>
                 <DivMenu>
                     <ANavLink to={'/home'} >Home</ANavLink>
+                    <ANavLink to={'/favorites'}>My Favorites</ANavLink>
                     <ANavLink to={'/about'} >About</ANavLink>
                 </DivMenu>
                 {location === '/home' ? <SearchBar onSearch={props.handleAddChar}  handleChange={props.handleChange} /> : ''}

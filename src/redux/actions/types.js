@@ -1,0 +1,7 @@
+const ADD_FAVORITE = 'ADD_FAVORITE';
+const DEL_FAVORITE = 'DEL_FAVORITE';
+
+export {
+    ADD_FAVORITE,
+    DEL_FAVORITE,
+}

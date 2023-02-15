@@ -1,13 +1,12 @@
 import React from 'react'
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import './App.css'
-//import Inicio from './components/Inicio/Inicio';
-// import Card from './components/Card'
 import Nav from './components/Nav/Nav'
 import Form from './components/Form/Form'
 import Cards from './components/Cards'
 import Detail from './components/Detail/Detail';
 import About from './components/About/About'
+import Favorites from './components/Favorites/Favorites';
 
 function App () {
 
@@ -74,6 +73,7 @@ function App () {
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
         <Route path='/detail/:detailId' element={<Detail />} />
         <Route path='/about' element={<About />} />
+        <Route path='/favorites' element={<Favorites />} />
       </Routes>
     </div>
   )
