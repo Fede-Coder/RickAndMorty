@@ -13,6 +13,12 @@ const DivMenu = styled.div`
     margin: 10px 10px;
 `
 
+const DivNavMain = styled.div`
+    @media (max-width: 1000px) {
+        display: none;
+    }
+`
+
 const ANavLink = styled(NavLink)`
     color: white;
     padding: 20px;
@@ -70,9 +76,78 @@ const NavButton = styled.button`
     }
 `
 
+const NavDivResponsive = styled.div`
+
+    @media (min-width: 1000px) {
+        display: none;
+    }
+`
+
+const NavResponsiveBtn = styled.button`
+    font-size: 25px;
+    color: white;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 10px;
+    background-color: #252525;
+    cursor: pointer;
+    transition: 0.1s all linear;
+    
+    &:focus {
+        box-shadow: 0px 0px 5px #ffffffeb;
+    }
+
+    &:hover {
+        box-shadow: 0px 0px 5px #ffffffeb;
+    }
+`
+
+const NavMenuResponsive = styled.div`
+    background-color: #575757;
+    position: absolute;
+    left: 0;
+    top: calc(0% + 90px);
+    border-radius: 0 0 10px 0;
+    transition: ${props => props.active ? 'visibility 0s' : 'visibility 0.2s'}, opacity 0.2s linear;
+    visibility: ${props => props.active ? 'visible' : 'hidden'};
+    opacity: ${props => props.active ? '1' : '0'};
+    z-index: 1000;
+`
+
+const NavLinkResponsive = styled(NavLink)`
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 25px;
+    padding: 10px;
+    margin-left: 2px;
+    transition: 0.1s all linear;
+
+    &.active {
+        background-color: #cfcfcf;
+        color: #252525;
+        box-shadow: -2px 0px #0051fffb;
+    }
+
+    &:hover {        
+        background-color: #cfcfcf;
+        color: #252525;
+        box-shadow: -2px 0px #0051fffb;
+    }
+    
+    &:last-child {
+        border-radius: 0 0 10px 0;
+    }
+`
+
 export {
     DivNav,
     DivMenu,
+    DivNavMain,
     ANavLink,
     NavButton,
+    NavDivResponsive,
+    NavResponsiveBtn,
+    NavMenuResponsive,
+    NavLinkResponsive,
 }

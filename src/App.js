@@ -7,6 +7,7 @@ import Cards from './components/Cards'
 import Detail from './components/Detail/Detail';
 import About from './components/About/About'
 import Favorites from './components/Favorites/Favorites';
+import NotFound from './components/NotFound/NotFound';
 
 function App () {
 
@@ -69,6 +70,7 @@ function App () {
     <div className='App'>
       <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />
       <Routes>
+        <Route path='*' element={<NotFound />} />
         <Route path='/' element={<Form login={login} />} />
         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
         <Route path='/detail/:detailId' element={<Detail />} />

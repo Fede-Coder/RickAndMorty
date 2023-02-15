@@ -2,7 +2,6 @@ import { connect } from "react-redux"
 import { FavCardDiv, FavCardLinkDetail, FavCardDivAvatar } from "./StyleFavorites"
 
 export function Favorites(props) {
-    console.log(props);
     return(
         <>
             {

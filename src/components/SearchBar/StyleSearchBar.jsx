@@ -5,9 +5,13 @@ const common = `
    margin: 0 10px;   
    border-radius: 5px;
    padding: 5px 10px;
+   @media (max-width: 1180px) {
+      font-size: 20px;
+   }
 `
 
 const SearchDiv = styled.div`
+   display: flex;
 `
 
 const SearchInput = styled.input`
@@ -18,6 +22,9 @@ const SearchInput = styled.input`
    &:focus {
       box-shadow: 0px 0px 5px #ffffffeb;
    };
+   @media (max-width: 500px) {
+      width: 50%;
+   }
    
 `
 
@@ -38,6 +45,9 @@ const SearchButton = styled.button`
    :active {
       box-shadow: 0 1px #0f5b38;
       transform: translateY(4px);
+   }
+   @media (max-width: 500px) {
+      width: 50%;
    }
 `
 

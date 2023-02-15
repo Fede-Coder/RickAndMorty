@@ -4,6 +4,12 @@ const DivDetail = styled.div`
     margin: 0 auto;
     color: white;
     width: 60%;
+    margin-bottom: 25px;
+    
+   
+   @media (max-width: 500px) {
+      width: 80%;
+   }
 `
 
 const H1Name = styled.h1`
@@ -28,6 +34,8 @@ const DivAvatar = styled.div`
 
     img {
         box-shadow: 0px 0px 10px #464646;
+        max-width: 100%;
+        max-height: 100%;
     }
 `
 
@@ -46,12 +54,12 @@ const DivInfo = styled.div`
     div {
         margin: 0 0;
         padding: 10px;
-        background-color: #757575;
+        background: radial-gradient(circle, rgba(112,112,112,1) 0%, rgba(112,112,112,1) 50%, rgba(112,112,112,0) 100%);
         font-size: 20px;
         width: 100%;
 
-        &:nth-child(even) {
-            background-color: #a0a0a0bc;
+        &:nth-child(even) {            
+            background: radial-gradient(circle, rgba(160,160,160,1) 0%, rgba(160,160,160,1) 50%, rgba(160,160,160,0) 100%);
         }
     }
 `

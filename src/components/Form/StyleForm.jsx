@@ -9,6 +9,9 @@ const FormDivContainer = styled.div`
     justify-content: center;
     align-content: center;
     flex-wrap: wrap;
+    @media (max-width: 520px) {
+        width: 90%;
+    }
 `
 
 const FormBoxLogin = styled.div`
@@ -24,11 +27,17 @@ const FormDivBG = styled.div`
     background-size: cover;
     background-position: center;
     box-shadow: inset 0px 5px 40px 15px #282a2d;
+    @media (max-width: 1070px) {
+        display: none;
+    }
 `
 
 const FormForm = styled.form`
     width: 50%;
     margin: auto;
+    @media (max-width: 1070px) {
+        width: 100%;
+    }
 `
 
 const FormDivLogin = styled.div`
@@ -50,6 +59,10 @@ const FormInput = styled.input`
     &:focus {
         box-shadow: 0px 3px #0db938;
     }
+
+    @media (max-width: 500px) {
+        width: 70%;
+    }
 `
 
 const FormButton = styled.button`
@@ -69,6 +82,10 @@ const FormButton = styled.button`
     &:hover {
         background-color: #242424;
     }
+
+    @media (max-width: 1070px) {
+        margin-bottom: 10px;
+    }
 `
 
 const FormDivError = styled.div`
@@ -78,6 +95,7 @@ const FormDivError = styled.div`
     margin: 15px auto;
     padding: 2px 10px;
     background-color: #ffcbc4;
+    border-radius: 10px;
 `
 
 const FormP = styled.li`
