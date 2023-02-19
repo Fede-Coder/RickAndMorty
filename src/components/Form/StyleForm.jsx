@@ -40,6 +40,11 @@ const FormForm = styled.form`
     }
 `
 
+const FormImgLogo = styled.img`
+    max-width: 70%;
+    margin: 10px 0;
+`
+
 const FormDivLogin = styled.div`
     margin: 15px 0;
 `
@@ -108,6 +113,7 @@ export {
     FormBoxLogin,
     FormDivBG,
     FormForm,
+    FormImgLogo,
     FormDivLogin,
     FormInput,
     FormButton,

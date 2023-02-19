@@ -8,6 +8,8 @@ import Detail from './components/Detail/Detail';
 import About from './components/About/About'
 import Favorites from './components/Favorites/Favorites';
 import NotFound from './components/NotFound/NotFound';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App () {
 
@@ -47,12 +49,27 @@ function App () {
     setCharacters(characters.filter(char => char.id !== Number(e.currentTarget.value)))
   }
 
+  const notify = (message, error = false) => {
+    if(error) {
+        toast.error(message, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000
+        })
+    } else {
+        toast.success(message, {
+            position: toast.POSITION.TOP_CENTER,
+            autoClose: 3000
+        })
+    }
+}
+
   function login(userData) {
     if(userData.password === password && userData.username === username) {
       setAccess(true);
-      navigate('/home');
+      navigate('/home');      
+      notify('Has iniciado correctamente!')
     } else {
-      alert('Error login')
+      notify('Error! Datos incorrectos', true)
     }
   }
 
@@ -68,7 +85,8 @@ function App () {
 
   return (
     <div className='App'>
-      <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />
+      <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />      
+      <ToastContainer theme="dark" />
       <Routes>
         <Route path='*' element={<NotFound />} />
         <Route path='/' element={<Form login={login} />} />
