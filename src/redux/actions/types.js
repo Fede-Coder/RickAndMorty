@@ -1,9 +1,17 @@
 //Agregar un personaje
 export const ADD_CHARACTER = 'ADD_CHARACTER';
+//Agregar un personaje random
+export const ADD_RANDOM_CHARACTER = 'ADD_RANDOM_CHARACTER';
 //Borrar un personaje
 export const DEL_CHARACTER = 'DEL_CHARACTER';
 //Limpiar personajes
 export const CLEAR_CHARACTER = 'CLEAR_CHARACTER';
+//Filtrar por genero
+export const FILTER_GENDER_CHARACTERS = 'FILTER_GENDER_CHARACTERS';
+//Ordenar personajes
+export const ORDER_CHARACTERS = 'ORDER_CHARACTERS';
+//Limpiar filtros
+export const CLEAR_FILTER_CHARACTERS = 'CLEAR_FILTER_CHARACTERS'
 
 //Obtener información del personaje
 export const GET_CHARACTER_DETAIL = 'GET_CHARACTER_DETAIL';

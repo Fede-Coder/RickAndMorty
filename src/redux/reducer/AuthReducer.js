@@ -5,7 +5,7 @@ const initialState = {
     user: null,
 }
 
-const rootReducer = (state = initialState, action) => {
+const AuthReducer = (state = initialState, action) => {
     switch(action.type) {
         case LOGGED_IN_SUCCESS:
             return {...state, access: action.payload.access, user: action.payload.user}
@@ -16,4 +16,4 @@ const rootReducer = (state = initialState, action) => {
     }
 }
 
-export default rootReducer;
+export default AuthReducer;

@@ -1,5 +1,4 @@
 import React from 'react';
-import SearchBar from '../SearchBar/SearchBar'
 import { DivNav, DivMenu, ANavLink, NavButton, NavDivResponsive, DivNavMain, NavResponsiveBtn, NavMenuResponsive, NavLinkResponsive } from './StyleNav';
 import { useLocation } from 'react-router-dom';
 
@@ -42,7 +41,6 @@ export default function Nav(props) {//props.handleAddChar  (funcion), props.hand
                         </NavMenuResponsive>
                     </NavDivResponsive>
                 </DivMenu>
-                {location === '/home' ? <SearchBar onSearch={props.handleAddChar}  handleChange={props.handleChange} /> : ''}
                 <NavButton onClick={props.logout}>Logout</NavButton>
             </DivNav> 
            :

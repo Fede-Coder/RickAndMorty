@@ -1,26 +1,17 @@
 import { DivDetail, H1Name, DivCard, DivAvatar, DivInfo, DivStatus } from './StyleDetail'
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { clearCharacterDetail, getCharacterDetail } from '../../redux/actions/CharacterAction';
 
-export default function Detail() {
-    const [character, setCharacter] = React.useState({});
+export function Detail(props) {
     const { detailId } = useParams();
+    const {getCharacterDetail, clearCharacterDetail} = props
 
     React.useEffect(() => {
-        fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
-          .then((response) => response.json())
-          .then((char) => {
-            if (char.name) {
-              setCharacter(char);
-            } else {
-              window.alert("No hay personajes con ese ID");
-            }
-          })
-          .catch((err) => {
-            window.alert("No hay personajes con ese ID");
-          });
-        return setCharacter({});
-    }, [detailId]);
+      getCharacterDetail(detailId)
+      return () => clearCharacterDetail()
+    }, [clearCharacterDetail, detailId, getCharacterDetail]);
 
     const getDate = (x) => {
         let date = new Date(x)
@@ -31,22 +22,22 @@ export default function Detail() {
     return(
         <DivDetail initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
             {
-                (Object.keys(character).length > 0 )
+                (Object.keys(props.characterDetail).length > 0 )
                 ?
                 <>
-                    <H1Name>{character.name}</H1Name>
+                    <H1Name>{props.characterDetail.name}</H1Name>
                     <DivCard>
                         <DivAvatar>
-                            <DivStatus status={character.status} />
-                            <img src={character.image} alt=''></img>
+                            <DivStatus status={props.characterDetail.status} />
+                            <img src={props.characterDetail.image} alt=''></img>
                         </DivAvatar>
                         <DivInfo>
                             <h1>Información</h1>
-                            <div><i className="fa-regular fa-calendar"></i> <span>{getDate(character.created)}</span></div>
-                            <div><i className="fa-regular fa-flag"></i> <span>{character.origin.name}</span></div>
-                            <div><i className="fa-solid fa-location-dot"></i> <span>{character.location.name}</span></div>
-                            <div><i className="fa-solid fa-person"></i> <span>{character.species}</span></div>
-                            <div><i className="fa-solid fa-venus-mars"></i> <span>{character.gender}</span></div>
+                            <div><i className="fa-regular fa-calendar"></i> <span>{getDate(props.characterDetail.created)}</span></div>
+                            <div><i className="fa-regular fa-flag"></i> <span>{props.characterDetail.origin.name}</span></div>
+                            <div><i className="fa-solid fa-location-dot"></i> <span>{props.characterDetail.location.name}</span></div>
+                            <div><i className="fa-solid fa-person"></i> <span>{props.characterDetail.species}</span></div>
+                            <div><i className="fa-solid fa-venus-mars"></i> <span>{props.characterDetail.gender}</span></div>
                         </DivInfo>
                     </DivCard>
                 </>
@@ -56,3 +47,18 @@ export default function Detail() {
         </DivDetail>
     )
 }
+
+export function mapStateToProps(state) {
+  return {
+    characterDetail: state.characters.characterDetail
+  }
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    getCharacterDetail: (card) => dispatch(getCharacterDetail(card)),
+    clearCharacterDetail: () => dispatch(clearCharacterDetail())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Detail)

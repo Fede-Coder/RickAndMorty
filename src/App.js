@@ -14,8 +14,8 @@ import { AnimatePresence } from 'framer-motion';
 
 function App () {
 
-  const [characters, setCharacters] = React.useState([]);
-  const [inputChar, setInputChar] = React.useState('');
+  // const [characters, setCharacters] = React.useState([]);
+  // const [inputChar, setInputChar] = React.useState('');
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,32 +24,32 @@ function App () {
   const password = '1password';
 
 
-  const onSearch = (id) => {
-    fetch(`https://rickandmortyapi.com/api/character/${id}`)
-      .then((res) => res.json())
-      .then((data) => 
-        {
-          data.name
-          ?
-          (characters.some(char => char.id === data.id))?alert('ya existe'):setCharacters([...characters, data])
-          //(characters.includes(data.id))?alert('ya existe'):setCharacters([...characters, data])
-          :
-          alert('No hay personajes con ese ID')
-        }
-      );
-  }
+  // const onSearch = (id) => {
+  //   fetch(`https://rickandmortyapi.com/api/character/${id}`)
+  //     .then((res) => res.json())
+  //     .then((data) => 
+  //       {
+  //         data.name
+  //         ?
+  //         (characters.some(char => char.id === data.id))?alert('ya existe'):setCharacters([...characters, data])
+  //         //(characters.includes(data.id))?alert('ya existe'):setCharacters([...characters, data])
+  //         :
+  //         alert('No hay personajes con ese ID')
+  //       }
+  //     );
+  // }
 
-  const handleAddChar = () => {
-    onSearch(inputChar)
-  }
+  // const handleAddChar = () => {
+  //   onSearch(inputChar)
+  // }
 
-  const handleChange = (e) => {
-    setInputChar(e.target.value)
-  }
+  // const handleChange = (e) => {
+  //   setInputChar(e.target.value)
+  // }
 
-  const onClose = (e) => {
-    setCharacters(characters.filter(char => char.id !== Number(e.currentTarget.value)))
-  }
+  // const onClose = (e) => {
+  //   setCharacters(characters.filter(char => char.id !== Number(e.currentTarget.value)))
+  // }
 
   const notify = (message, error = false) => {
     if(error) {
@@ -87,13 +87,13 @@ function App () {
 
   return (
     <div className='App'>
-      <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />      
+      <Nav logout={logout} />      
       <ToastContainer theme="dark" />
       <AnimatePresence>
         <Routes location={location} key={location.pathname} >
           <Route path='*' element={<NotFound />} />
           <Route path='/' element={<Login login={login} />} />
-          <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+          <Route path='/home' element={<Cards />} />
           <Route path='/detail/:detailId' element={<Detail />} />
           <Route path='/about' element={<About />} />
           <Route path='/favorites' element={<Favorites />} />

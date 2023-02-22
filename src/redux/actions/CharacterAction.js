@@ -8,6 +8,8 @@ import {
     ADD_CHAR_FAVORITE,
     DEL_CHAR_FAVORITE,
     CLEAR_CHAR_FAVORITE,
+    ORDER_CHARACTERS,
+    FILTER_GENDER_CHARACTERS,
 } from "./types";
 
 function addCharacter(id) {
@@ -25,8 +27,19 @@ const clearCharacter = () => {
     return { type: CLEAR_CHARACTER }
 }
 
-const getCharacterDetail = (char) => {
-    return { type: GET_CHARACTER_DETAIL, payload: char }
+const filterGenderCharacters = (gender) => {
+    return { type: FILTER_GENDER_CHARACTERS, payload: gender }
+}
+
+const orderCharacters = (id) => {
+    return { type: ORDER_CHARACTERS, payload: id }
+}
+
+const getCharacterDetail = (id) => {
+    return async function(dispatch) {
+        let res = await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(response => response.data)
+        dispatch({type: GET_CHARACTER_DETAIL, payload: res })
+    }
 }
 
 const clearCharacterDetail = () => {
@@ -49,6 +62,8 @@ export {
     addCharacter,
     delCharacter,
     clearCharacter,
+    filterGenderCharacters,
+    orderCharacters,
     getCharacterDetail,
     clearCharacterDetail,
     addCharFavorite,

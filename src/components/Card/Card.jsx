@@ -1,35 +1,35 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addFavorite, delFavorite } from '../../redux/actions/actions'
+import { addCharFavorite, delCharacter, delCharFavorite } from '../../redux/actions/CharacterAction';
 import {DivCard, LinkDetail, ButtonCard, DivAvatar, DivInfo, person, gender} from './StyleCard'
 
 export function Card(props) {
    const [isFav, setIsFav] = React.useState(false);
-   const {myFavorites} = props
+   const {favorites} = props
 
    const handleFavorite = () => {
       //code
       if(isFav) {
          setIsFav(false);
-         props.delFavorite(props.id);
+         props.delCharFavorite(props.id);
       } else {
          setIsFav(true);
-         props.addFavorite(props)
+         props.addCharFavorite(props)
       }
    }
 
    React.useEffect(() => {
-      for (let i = 0; i < myFavorites.length; i++) {
-         if(myFavorites[i].id === props.id){
+      for (let i = 0; i < favorites.length; i++) {
+         if(favorites[i].id === props.id){
             setIsFav(true);
          }
       }
    // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [myFavorites]);
+   }, [favorites]);
 
    const handleClose = (e) => {
-      props.onClose(e)
-      props.delFavorite(Number(e.currentTarget.value))
+      props.delCharacter(Number(e.currentTarget.value))
+      props.delCharFavorite(Number(e.currentTarget.value))
    }
 
    return (
@@ -55,14 +55,15 @@ export function Card(props) {
 
 export function mapStateToProps(state) {
    return {
-      myFavorites: state.myFavorites,
+      favorites: state.characters.favorites
    }
 }
 
 export function mapDispatchToProps(dispatch) {
    return {
-      addFavorite: (card) => dispatch(addFavorite(card)),
-      delFavorite: (id) => dispatch(delFavorite(id))
+      addCharFavorite: (card) => dispatch(addCharFavorite(card)),
+      delCharFavorite: (id) => dispatch(delCharFavorite(id)),
+      delCharacter: (id) => dispatch(delCharacter(id)),
    }
 }
 

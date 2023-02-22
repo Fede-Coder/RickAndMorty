@@ -6,8 +6,8 @@ export function Favorites(props) {
     return(
         <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
             {
-                props.myFavorites.map(myFav =>
-                    <FavCardDiv>
+               props.favorites && props.favorites.map(myFav =>
+                    <FavCardDiv key={myFav.id}>
                         <FavCardLinkDetail to={`/detail/${myFav.id}`}><i className="fa-solid fa-info"></i></FavCardLinkDetail>
                         <FavCardDivAvatar>
                             <h2>{myFav.name}</h2>
@@ -22,7 +22,7 @@ export function Favorites(props) {
 
 export function mapStateToProps(state) {
     return {
-       myFavorites: state.myFavorites,
+        favorites: state.characters.favorites
     }
  }
 
