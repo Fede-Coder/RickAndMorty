@@ -1,15 +1,16 @@
 import React from 'react'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import './App.css'
 import Nav from './components/Nav/Nav'
-import Form from './components/Form/Form'
-import Cards from './components/Cards'
+import Cards from './components/Card/Cards'
 import Detail from './components/Detail/Detail';
 import About from './components/About/About'
 import Favorites from './components/Favorites/Favorites';
 import NotFound from './components/NotFound/NotFound';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+import Login from './components/Login/Login';
+import { AnimatePresence } from 'framer-motion';
 
 function App () {
 
@@ -17,6 +18,7 @@ function App () {
   const [inputChar, setInputChar] = React.useState('');
 
   const navigate = useNavigate();
+  const location = useLocation();
   const [access, setAccess] = React.useState(false);
   const username = 'ejemplo@gmail.com';
   const password = '1password';
@@ -66,6 +68,7 @@ function App () {
   function login(userData) {
     if(userData.password === password && userData.username === username) {
       setAccess(true);
+      localStorage.setItem('access', JSON.stringify(true))
       navigate('/home');      
       notify('Has iniciado correctamente!')
     } else {
@@ -79,22 +82,25 @@ function App () {
   }
 
   React.useEffect(() => {
-    !access && navigate('/')
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [access]);
+    !JSON.parse(localStorage.getItem('access')) && navigate('/')
+  }, [access, navigate]);
 
   return (
     <div className='App'>
       <Nav handleAddChar={handleAddChar} handleChange={handleChange} logout={logout} />      
       <ToastContainer theme="dark" />
-      <Routes>
-        <Route path='*' element={<NotFound />} />
-        <Route path='/' element={<Form login={login} />} />
-        <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
-        <Route path='/detail/:detailId' element={<Detail />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/favorites' element={<Favorites />} />
-      </Routes>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname} >
+          <Route path='*' element={<NotFound />} />
+          <Route path='/' element={<Login login={login} />} />
+          <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+          <Route path='/detail/:detailId' element={<Detail />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/favorites' element={<Favorites />} />
+        </Routes>
+      </AnimatePresence>
+      
+      
     </div>
   )
 }

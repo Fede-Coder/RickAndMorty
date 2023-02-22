@@ -1,11 +1,13 @@
 import React from "react";
-import { FormBoxLogin, FormButton, FormDivBG, FormDivContainer, FormForm, FormInput, FormDivLogin, FormDivError, FormP, FormImgLogo} from "./StyleForm";
+import { FormBoxLogin, FormButton, FormDivBG, FormDivContainer, FormForm, FormInput, FormDivLogin, FormDivError, FormP, FormImgLogo} from "./StyleLogin";
 import { validation } from "./validation";
 import logoRM from '../../assets/img/logo.png'
 import { toast } from "react-toastify";
+import Loading from '../../assets/Loading'
 
 
-export default function Form(props) {
+
+export default function Login(props) {
     const [userData, setUserData] = React.useState({ username: '', password: '' });
     const [errors, setErrors] = React.useState({ });
 
@@ -48,7 +50,7 @@ export default function Form(props) {
     }, [userData]);
     
     return (
-        <FormDivContainer>
+        <FormDivContainer initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
             <FormBoxLogin>
                 <FormDivBG/>
                 <FormForm onSubmit={handleSubmit} autoComplete="off">
@@ -59,7 +61,7 @@ export default function Form(props) {
                     <FormDivLogin>
                         <FormInput type={'text'} name={'password'} value={userData.password} placeholder={'Password'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>                    
-                    <FormButton>Login</FormButton>
+                    <FormButton><Loading/>Login</FormButton>
                     {(Object.keys(errors).length > 0)
                     ? 
                     <FormDivError>

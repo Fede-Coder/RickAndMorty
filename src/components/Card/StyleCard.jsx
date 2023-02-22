@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-const DivCard = styled.div`
+const DivCard = styled(motion.div)`
    display: inline-block;
    margin: 10px;
    background-color: #dfdfdf;

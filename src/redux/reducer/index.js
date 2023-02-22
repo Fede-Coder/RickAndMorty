@@ -1,4 +1,4 @@
-import { ADD_FAVORITE, DEL_FAVORITE } from "../actions/types";
+import { ADD_CHAR_FAVORITE, DEL_CHAR_FAVORITE } from "../actions/types";
 
 const initialState = {
     myFavorites: []
@@ -6,9 +6,9 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
-        case ADD_FAVORITE:
+        case ADD_CHAR_FAVORITE:
             return {...state, myFavorites: [...state.myFavorites, action.payload]}
-        case DEL_FAVORITE:
+        case DEL_CHAR_FAVORITE:
             return {...state, myFavorites: state.myFavorites.filter(fav => fav.id !== action.payload)}
         default:
             return {...state}

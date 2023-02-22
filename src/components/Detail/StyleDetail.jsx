@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled, {css, keyframes} from "styled-components";
 
-const DivDetail = styled.div`
+const DivDetail = styled(motion.div)`
     margin: 0 auto;
     color: white;
     width: 60%;

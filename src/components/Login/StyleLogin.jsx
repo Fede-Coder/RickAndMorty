@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import bg from '../../assets/img/rick-n-morty-wallpaper.jpg'
+import { motion } from "framer-motion";
 
-const FormDivContainer = styled.div`
+const FormDivContainer = styled(motion.div)`
     margin: 0 auto;
     width: 60%;
     min-height: 100vh;

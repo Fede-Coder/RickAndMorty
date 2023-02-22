@@ -29,7 +29,7 @@ export default function Detail() {
     }
     
     return(
-        <DivDetail>
+        <DivDetail initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
             {
                 (Object.keys(character).length > 0 )
                 ?

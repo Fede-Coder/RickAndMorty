@@ -33,7 +33,7 @@ export function Card(props) {
    }
 
    return (
-      <DivCard>
+      <DivCard initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
          <LinkDetail to={`/detail/${props.id}`}><i className="fa-solid fa-info"></i></LinkDetail>
          <div id="button">
             <ButtonCard onClick={handleClose} value={props.id}><i className="fa-solid fa-xmark"></i></ButtonCard>
