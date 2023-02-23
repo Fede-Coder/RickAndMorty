@@ -45,7 +45,8 @@ const CardsInput = styled.input`
 const CardsButton = styled.button`
     font-size: 20px;
     margin: 0 5px 0 5px;
-    background-color: #3cc03a;
+    //#3cc03a
+    background-color: ${props => (props.bgRed && '#e92a2a') || '#3cc03a'};
     padding: 10px 12px;
     border: none;
     border-radius: 15px;

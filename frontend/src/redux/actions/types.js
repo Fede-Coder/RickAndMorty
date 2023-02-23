@@ -10,8 +10,8 @@ export const CLEAR_CHARACTER = 'CLEAR_CHARACTER';
 export const FILTER_GENDER_CHARACTERS = 'FILTER_GENDER_CHARACTERS';
 //Ordenar personajes
 export const ORDER_CHARACTERS = 'ORDER_CHARACTERS';
-//Limpiar filtros
-export const CLEAR_FILTER_CHARACTERS = 'CLEAR_FILTER_CHARACTERS'
+//Resetear filtros
+export const RESET_FILTER_CHARACTERS = 'RESET_FILTER_CHARACTERS'
 
 //Obtener información del personaje
 export const GET_CHARACTER_DETAIL = 'GET_CHARACTER_DETAIL';

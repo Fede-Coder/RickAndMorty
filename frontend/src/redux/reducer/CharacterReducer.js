@@ -3,14 +3,14 @@ import {
     ADD_RANDOM_CHARACTER,
     DEL_CHARACTER,
     CLEAR_CHARACTER,
+    FILTER_GENDER_CHARACTERS,
     ORDER_CHARACTERS,
-    CLEAR_FILTER_CHARACTERS,
+    RESET_FILTER_CHARACTERS,
     GET_CHARACTER_DETAIL,
     CLEAR_CHARACTER_DETAIL,
     ADD_CHAR_FAVORITE,
     DEL_CHAR_FAVORITE,
     CLEAR_CHAR_FAVORITE,
-    FILTER_GENDER_CHARACTERS,
 } from "../actions/types";
 
 const initialState = {
@@ -45,6 +45,7 @@ const CharacterReducer = (state = initialState, action) => {
                 ...state,
                 characters: [],
                 allCharacters: [],
+                favorites: [],
             }
         case FILTER_GENDER_CHARACTERS:
             return {
@@ -59,7 +60,7 @@ const CharacterReducer = (state = initialState, action) => {
                     ? state.allCharacters.slice().sort((a, b) => a.id > b.id) 
                     : state.allCharacters.slice().sort((a, b) => a.id < b.id)
             }
-        case CLEAR_FILTER_CHARACTERS:
+        case RESET_FILTER_CHARACTERS:
             return {
                 ...state,
                 characters: state.allCharacters

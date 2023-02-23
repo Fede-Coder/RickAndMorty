@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addCharacter, clearCharacter, filterGenderCharacters, orderCharacters } from '../../redux/actions/CharacterAction';
+import { addCharacter, clearCharacter, filterGenderCharacters, orderCharacters, resetFilterCharacters } from '../../redux/actions/CharacterAction';
 import Card from './Card';
 import { CardsDivMain, CardsDivBar, CardsDivAddChar, CardsDivFilter, CardsDivSearch, CardsInput, CardsButton, CardsSelect } from './StyleCards';
 
@@ -33,29 +33,56 @@ export function Cards(props) {
       props.filterGenderCharacters(event.target.value)
    }
 
+   const handleClearCharacter = () => {
+      props.clearCharacter()
+   }
+
+   const handleResetFilter = () => {
+      props.resetFilterCharacters();
+   }
+
+   const generateUniqueRandom = () => {
+      let maxChar = 826;
+      //Creo una variable random, que genere un numero cualquiera entre 1 y 826
+      let randomId = Math.floor(Math.random() * maxChar)+1
+      //Verifico si dentro array de characters existe igual al randomId
+      if(!props.characters.some(char => char.id === randomId)) {
+         //props.addCharacter(randomId);
+         return randomId;
+      } else {
+         if(props.characters < maxChar) {
+            return generateUniqueRandom()
+         } else {
+            alert('No se puede agregar mas personajes.')
+            return false;
+         }
+      }
+   }
+
    return (
       <CardsDivMain>
          <CardsDivBar>
             <CardsDivAddChar>
                <CardsInput placeholder={'Id'} name={'add'} onChange={handleOnChange}/>
                <CardsButton onClick={() => handleOnClickAddChar(input.add)} ><i className="fa-solid fa-user-plus"></i></CardsButton>
-               <CardsButton><i className="fa-solid fa-shuffle"></i></CardsButton>
+               <CardsButton onClick={() => handleOnClickAddChar(generateUniqueRandom())}><i className="fa-solid fa-shuffle"></i></CardsButton>
+               <CardsButton bgRed onClick={() => handleClearCharacter()}><i className="fa-regular fa-trash-can"></i></CardsButton>
             </CardsDivAddChar>
             <CardsDivFilter>
                <CardsSelect onChange={handleOrder}>
-                  <option value={'order'} selected disabled>Ordenar por...</option>
+                  <option value={'order'} disabled>Ordenar por...</option>
                   <option value={'Ascendente'}>Ascendente</option>
                   <option value={'Descendente'}>Descendente</option>
                </CardsSelect>               
                <CardsSelect onChange={handleFilter}>
-                  <option value={'filter'} selected disabled>Filtrar por...</option>
+                  <option value={'filter'} disabled>Filtrar por...</option>
                   <option value={'Male'}>Masculino</option>
                   <option value={'Female'}>Femenino</option>
                   <option value={'Genderless'}>Sin género</option>
                   <option value={'Unknown'}>Desconocido</option>
                </CardsSelect>
-               <CardsButton><i className="fa-solid fa-filter"></i></CardsButton>
-               <CardsButton><i className="fa-solid fa-rotate"></i></CardsButton>
+               {/* <CardsButton><i className="fa-solid fa-filter"></i></CardsButton> */}
+               <CardsButton onClick={() => handleResetFilter()}><i className="fa-solid fa-rotate"></i></CardsButton>
             </CardsDivFilter>
             <CardsDivSearch>
                <CardsInput placeholder={'Buscar...'} name={'search'} onChange={handleOnChange}/>
@@ -82,7 +109,8 @@ export function mapDispatchToProps(dispatch) {
       addCharacter: (id) => dispatch(addCharacter(id)),
       clearCharacter: () => dispatch(clearCharacter()),
       filterGenderCharacters: (gender) => dispatch(filterGenderCharacters(gender)),
-      orderCharacters: (id) => dispatch(dispatch(orderCharacters(id))),
+      orderCharacters: (id) => dispatch(orderCharacters(id)),
+      resetFilterCharacters: () => dispatch(resetFilterCharacters())
    }
 }
 
