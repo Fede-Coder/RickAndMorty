@@ -20,7 +20,7 @@ function App () {
   const navigate = useNavigate();
   const location = useLocation();
   const [access, setAccess] = React.useState(false);
-  const username = 'ejemplo@gmail.com';
+  const username = 'email@email.com';
   const password = '1password';
 
 

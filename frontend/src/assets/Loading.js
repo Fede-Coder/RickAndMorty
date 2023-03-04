@@ -20,6 +20,7 @@ const LoadingSpan = styled.span`
     text-transform: none;
     vertical-align: -.125em;
     text-rendering: optimizeLegibility;
+    opacity: 0.7;
 `
 
 

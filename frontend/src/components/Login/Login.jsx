@@ -4,10 +4,12 @@ import { validation } from "./validation";
 import logoRM from '../../assets/img/logo.png'
 import { toast } from "react-toastify";
 import Loading from '../../assets/Loading'
+import { connect } from "react-redux";
+import { loginAuth } from "../../redux/actions/AuthAction";
 
 
 
-export default function Login(props) {
+export function Login(props) {
     const [userData, setUserData] = React.useState({ username: '', password: '' });
     const [errors, setErrors] = React.useState({ });
 
@@ -39,6 +41,7 @@ export default function Login(props) {
         e.preventDefault();
         if(Object.keys(errors).length === 0) {
             props.login(userData)
+            props.loginAuth(userData)
         } else {
             //Modificar
             notify('Error! Los campos estan incorrectos', true)
@@ -56,12 +59,12 @@ export default function Login(props) {
                 <FormForm onSubmit={handleSubmit} autoComplete="off">
                     <FormImgLogo draggable={false} src={logoRM} alt={'logo-rick-morty'} />
                     <FormDivLogin>
-                        <FormInput type={'text'} name={'username'} value={userData.username} placeholder={'Username'} onChange={handleInputChange}></FormInput>
+                        <FormInput disabled={props.isFetching} type={'text'} name={'username'} value={userData.username} placeholder={'Username'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>
                     <FormDivLogin>
-                        <FormInput type={'text'} name={'password'} value={userData.password} placeholder={'Password'} onChange={handleInputChange}></FormInput>
+                        <FormInput disabled={props.isFetching} type={'text'} name={'password'} value={userData.password} placeholder={'Password'} onChange={handleInputChange}></FormInput>
                     </FormDivLogin>                    
-                    <FormButton><Loading/>Login</FormButton>
+                    <FormButton disabled={props.isFetching}>{props.isFetching ? <Loading/> : ''}Login</FormButton>
                     {(Object.keys(errors).length > 0)
                     ? 
                     <FormDivError>
@@ -77,3 +80,17 @@ export default function Login(props) {
         </FormDivContainer>
     )
 }
+
+export function mapStateToProps(state) {
+    return {
+        isFetching: state.auth.isFetching
+    }
+}
+
+export function mapDispatchToProps(dispatch) {
+  return {
+    loginAuth: (userdata) => dispatch(loginAuth(userdata))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

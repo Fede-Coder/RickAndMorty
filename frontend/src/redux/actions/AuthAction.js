@@ -1,27 +1,34 @@
-import { LOGGED_IN_SUCCESS, LOGGED_IN_FAIL } from "./types"
+import axios from "axios"
+import { LOGGED_IN_SUCCESS, LOGGED_IN_FAIL, LOGIN_REQUEST } from "./types"
 
-function loginSuccess(username, password) {
+function loginRequest() {
+    return {
+        type: LOGIN_REQUEST,
+    }
+}
+
+function loginSuccess(userdata) {
     return {
         type: LOGGED_IN_SUCCESS,
-        payload: {
-            access: true,
-            user: {username: username, password: password},
-        },
+        payload: userdata,
     }
 }
 
 function loginFailed() {
     return {
-        type: LOGGED_IN_FAIL,
-        payload: {
-            access: false,
-            user: null,
-        },
+        type: LOGGED_IN_FAIL
     }
 }
 
-export function login(username, password) {
-    const user = "ejemplo@gmail.com"
-    const pass = "1password"
-    return username === user && password === pass ? loginSuccess(username, password) : loginFailed();
+export function loginAuth(userdata) {
+    return async function(dispatch) {
+        dispatch(loginRequest())
+        setTimeout( async function() {
+            await axios.post('http://localhost:3001/auth/login', userdata)
+            .then(res => {
+                dispatch(loginSuccess(res.data))
+            })
+            .catch(error => dispatch(loginFailed()))
+        }, 2000)
+    }
 }

@@ -65,6 +65,11 @@ const FormInput = styled.input`
     &:focus {
         box-shadow: 0px 3px #0db938;
     }
+    
+    &:disabled {
+        background-color: #b3b3b3;
+        cursor: not-allowed;
+    }
 
     @media (max-width: 500px) {
         width: 70%;
@@ -76,7 +81,7 @@ const FormButton = styled.button`
     color: white;
     font-size: 25px;
     padding: 10px 50px;
-    transition: 0.1s all ease-out;
+    transition: 0.2s all ease-out;
     border: none;
     outline: none;
     border-radius: 10px;
@@ -87,6 +92,11 @@ const FormButton = styled.button`
 
     &:hover {
         background-color: #242424;
+    }
+    
+    &:disabled {
+        background-color: #424242;
+        cursor: not-allowed;
     }
 
     @media (max-width: 1070px) {
