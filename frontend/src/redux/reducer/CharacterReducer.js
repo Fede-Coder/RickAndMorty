@@ -69,7 +69,7 @@ const CharacterReducer = (state = initialState, action) => {
         case SEARCH_CHARACTERS:
             return {
                 ...state,
-                characters: state.allCharacters.filter(char => char.name.includes(action.payload))
+                characters: state.allCharacters.filter(char => char.name.toLowerCase().includes(action.payload.toLowerCase()))
             }
         case GET_CHARACTER_DETAIL:
             return {

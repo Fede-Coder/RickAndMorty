@@ -4,33 +4,42 @@ import { NavLink } from "react-router-dom";
 const DivNav = styled.div`
     display: flex;
     justify-content: space-between;
-    background-color: #86868671;
+    background-color: white;
     margin-bottom: 20px;
     padding: 10px 0;
+    border-radius: 0px 0px 15px 15px;
+    border-bottom: 5px solid #b3b3b3;
+
 `
 
 const DivMenu = styled.div`
-    margin: 10px 10px;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
 `
 
 const DivNavMain = styled.div`
     @media (max-width: 1000px) {
         display: none;
     }
+    display: flex;
 `
 
 const ANavLink = styled(NavLink)`
     color: white;
-    padding: 20px;
-    font-size: 30px;
+    font-size: 25px;
     background-color: #868686;
     text-decoration: none;
     transition: 100ms all linear;
     position: relative;
+    border-radius: 10px;
+    padding: 8px;
+    margin: 5px 5px;
 
     &.active {
-        background-color: #cfcfcf;
-        color: #252525;
+        background-color: #0080ca;
+        color: #ffffff;
     }
 
     &.active:after {
@@ -40,22 +49,6 @@ const ANavLink = styled(NavLink)`
     &:hover {        
         background-color: #cfcfcf;
         color: #252525;
-    }
-
-    &:after {
-        content: '';
-        width: 100%;
-        transform: scaleX(0);
-        height: 4px;
-        bottom: 0;
-        left: 0;
-        background-color: #0051fffb;
-        transition: transform 0.5s cubic-bezier(.68,-0.55,.27,1.55);
-        position: absolute;
-    }
-
-    &:hover:after {
-        transform: scaleX(1);
     }
 `
 

@@ -40,8 +40,8 @@ export default function Nav(props) {//props.handleAddChar  (funcion), props.hand
                             <NavLinkResponsive to={'/about'} >About</NavLinkResponsive>
                         </NavMenuResponsive>
                     </NavDivResponsive>
-                </DivMenu>
-                <NavButton onClick={props.logout}>Logout</NavButton>
+                    <NavButton onClick={props.logout}>Logout</NavButton>
+                </DivMenu>                
             </DivNav> 
            :
            ''}
