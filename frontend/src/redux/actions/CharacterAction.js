@@ -7,6 +7,7 @@ import {
     FILTER_GENDER_CHARACTERS,
     ORDER_CHARACTERS,
     RESET_FILTER_CHARACTERS,
+    SEARCH_CHARACTERS,
     GET_CHARACTER_DETAIL,
     CLEAR_CHARACTER_DETAIL,
     ADD_CHAR_FAVORITE,
@@ -47,6 +48,10 @@ const resetFilterCharacters = () => {
     return { type: RESET_FILTER_CHARACTERS }
 }
 
+const searchCharacters = (words) => {
+    return { type: SEARCH_CHARACTERS, payload: words }
+}
+
 const getCharacterDetail = (id) => {
     return async function(dispatch) {
         let res = await axios.get(`https://rickandmortyapi.com/api/character/${id}`).then(response => response.data)
@@ -78,6 +83,7 @@ export {
     filterGenderCharacters,
     orderCharacters,
     resetFilterCharacters,
+    searchCharacters,
     getCharacterDetail,
     clearCharacterDetail,
     addCharFavorite,

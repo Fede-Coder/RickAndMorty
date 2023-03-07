@@ -12,6 +12,8 @@ export const FILTER_GENDER_CHARACTERS = 'FILTER_GENDER_CHARACTERS';
 export const ORDER_CHARACTERS = 'ORDER_CHARACTERS';
 //Resetear filtros
 export const RESET_FILTER_CHARACTERS = 'RESET_FILTER_CHARACTERS'
+//Busqueda
+export const SEARCH_CHARACTERS = 'SEARCH_CHARACTERS'
 
 //Obtener información del personaje
 export const GET_CHARACTER_DETAIL = 'GET_CHARACTER_DETAIL';

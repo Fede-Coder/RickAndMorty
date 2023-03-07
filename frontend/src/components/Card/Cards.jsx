@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addCharacter, clearCharacter, filterGenderCharacters, orderCharacters, resetFilterCharacters } from '../../redux/actions/CharacterAction';
+import { addCharacter, clearCharacter, filterGenderCharacters, orderCharacters, resetFilterCharacters, searchCharacters } from '../../redux/actions/CharacterAction';
 import Card from './Card';
 import { CardsDivMain, CardsDivBar, CardsDivAddChar, CardsDivFilter, CardsDivSearch, CardsInput, CardsButton, CardsSelect } from './StyleCards';
 
@@ -18,11 +18,14 @@ export function Cards(props) {
    }
 
    const handleOnClickAddChar = (id) => {
-      props.characters.some(char => char.id === Number(id))
-      ?
-      alert('ya existe')
-      :
-      props.addCharacter(id)
+      if(id >= 1 && id <= 826) {
+         props.characters.some(char => char.id === Number(id))
+         ?
+         alert('ya existe')
+         :
+         props.addCharacter(id)
+      }
+      
    }
 
    const handleOrder = (event) => {
@@ -39,6 +42,10 @@ export function Cards(props) {
 
    const handleResetFilter = () => {
       props.resetFilterCharacters();
+   }
+
+   const handleSearchCharacter = (words) => {
+      props.searchCharacters(words)
    }
 
    const generateUniqueRandom = () => {
@@ -86,7 +93,7 @@ export function Cards(props) {
             </CardsDivFilter>
             <CardsDivSearch>
                <CardsInput placeholder={'Buscar...'} name={'search'} onChange={handleOnChange}/>
-               <CardsButton><i className="fa-solid fa-magnifying-glass"></i></CardsButton>
+               <CardsButton onClick={() => handleSearchCharacter(input.search)}><i className="fa-solid fa-magnifying-glass"></i></CardsButton>
             </CardsDivSearch>
          </CardsDivBar>
          {
@@ -110,7 +117,8 @@ export function mapDispatchToProps(dispatch) {
       clearCharacter: () => dispatch(clearCharacter()),
       filterGenderCharacters: (gender) => dispatch(filterGenderCharacters(gender)),
       orderCharacters: (id) => dispatch(orderCharacters(id)),
-      resetFilterCharacters: () => dispatch(resetFilterCharacters())
+      resetFilterCharacters: () => dispatch(resetFilterCharacters()),
+      searchCharacters: (words) => dispatch(searchCharacters(words))
    }
 }
 

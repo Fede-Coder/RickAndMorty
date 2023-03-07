@@ -5,13 +5,13 @@ import {DivCard, LinkDetail, ButtonCard, DivAvatar, DivInfo, person, gender} fro
 
 export function Card(props) {
    const [isFav, setIsFav] = React.useState(false);
-   const {favorites} = props
+   const {favorites, id: idChar} = props
 
    const handleFavorite = () => {
       //code
       if(isFav) {
          setIsFav(false);
-         props.delCharFavorite(props.id);
+         props.delCharFavorite(idChar);
       } else {
          setIsFav(true);
          props.addCharFavorite(props)
@@ -20,12 +20,11 @@ export function Card(props) {
 
    React.useEffect(() => {
       for (let i = 0; i < favorites.length; i++) {
-         if(favorites[i].id === props.id){
+         if(favorites[i].id === idChar){
             setIsFav(true);
          }
       }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
-   }, [favorites]);
+   }, [favorites, idChar]);
 
    const handleClose = (e) => {
       props.delCharacter(Number(e.currentTarget.value))
@@ -34,9 +33,9 @@ export function Card(props) {
 
    return (
       <DivCard initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
-         <LinkDetail to={`/detail/${props.id}`}><i className="fa-solid fa-info"></i></LinkDetail>
+         <LinkDetail to={`/detail/${idChar}`}><i className="fa-solid fa-info"></i></LinkDetail>
          <div id="button">
-            <ButtonCard onClick={handleClose} value={props.id}><i className="fa-solid fa-xmark"></i></ButtonCard>
+            <ButtonCard onClick={handleClose} value={idChar}><i className="fa-solid fa-xmark"></i></ButtonCard>
          </div>
          <DivAvatar>
             <h2>{props.name}</h2>

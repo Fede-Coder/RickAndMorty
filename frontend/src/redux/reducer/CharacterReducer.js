@@ -6,6 +6,7 @@ import {
     FILTER_GENDER_CHARACTERS,
     ORDER_CHARACTERS,
     RESET_FILTER_CHARACTERS,
+    SEARCH_CHARACTERS,
     GET_CHARACTER_DETAIL,
     CLEAR_CHARACTER_DETAIL,
     ADD_CHAR_FAVORITE,
@@ -64,6 +65,11 @@ const CharacterReducer = (state = initialState, action) => {
             return {
                 ...state,
                 characters: state.allCharacters
+            }
+        case SEARCH_CHARACTERS:
+            return {
+                ...state,
+                characters: state.allCharacters.filter(char => char.name.includes(action.payload))
             }
         case GET_CHARACTER_DETAIL:
             return {
