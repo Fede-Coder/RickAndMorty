@@ -19,6 +19,7 @@ const FormBoxLogin = styled.div`
     background-color: #eaeaea;
     width: 100%;
     display: flex;
+    border-radius: 10px;
 `
 
 const FormDivBG = styled.div`
@@ -27,7 +28,8 @@ const FormDivBG = styled.div`
     width: 50%;
     background-size: cover;
     background-position: center;
-    box-shadow: inset 0px 5px 40px 15px #282a2d;
+    box-shadow: inset 0px 5px 40px 15px #282a2d;    
+    border-radius: 10px 0 0 10px;
     @media (max-width: 1070px) {
         display: none;
     }
