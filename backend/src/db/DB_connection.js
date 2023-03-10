@@ -13,8 +13,8 @@ userModel(sequelize)
 characterModel(sequelize)
 
 
-sequelize.models.User.belongsToMany(sequelize.models.Character, { through: 'User_Char', foreignKey: 'user_id', timestamps: false});
-sequelize.models.Character.belongsToMany(sequelize.models.User, { through: 'User_Char', foreignKey: 'char_id', timestamps: false})
+sequelize.models.User.belongsToMany(sequelize.models.Character, { through: 'User_Char', timestamps: false});
+sequelize.models.Character.belongsToMany(sequelize.models.User, { through: 'User_Char', timestamps: false})
 
 module.exports = {
     ...sequelize.models,

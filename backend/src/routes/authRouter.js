@@ -1,13 +1,13 @@
 const { Router } = require('express')
-const { authentication, register } = require('../controllers/authentication')
+const { login, register } = require('../controllers/auth')
 
 
 const authRouter = Router();
 
-authRouter.post('/login', (req, res) => {
+authRouter.post('/login', async (req, res) => {
     const {username, password} = req.body
     try {
-        const result = authentication(username, password)
+        const result = await login(username, password)
         res.status(200).json(result)
     } catch (error) {
         res.status(403).json({error: error.message})
