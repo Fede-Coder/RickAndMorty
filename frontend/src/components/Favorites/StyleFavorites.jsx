@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+const FavDiv = styled.div`    
+    min-height: 70vh;
+`
+
 const FavCardDiv = styled.div`
     display: inline-block;
     margin: 10px;
@@ -57,6 +61,7 @@ const FavCardDivAvatar = styled.div`
 
 
 export {
+    FavDiv,
     FavCardDiv,
     FavCardLinkDetail,
     FavCardDivAvatar,

@@ -6,6 +6,7 @@ const DivDetail = styled(motion.div)`
     color: white;
     width: 60%;
     margin-bottom: 25px;
+    min-height: 70vh;
     
    
    @media (max-width: 500px) {

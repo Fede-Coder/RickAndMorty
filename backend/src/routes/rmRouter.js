@@ -1,7 +1,7 @@
-const { Router } = require('express')
+const { Router } = require('express');
+const { getCharByUser } = require('../controllers/getCharByUser');
 const { getApiData } = require('../controllers/saveApiData')
 const { User } = require('../db/DB_connection')
-const { User_Char } = require('../db/DB_connection')
 const { Character } = require('../db/DB_connection')
 
 const rmRouter = Router();
@@ -24,11 +24,12 @@ rmRouter.get('/alldb', async (req, res) => {
     }
 })
 rmRouter.post('/getCharByUser', async (req, res) => {
+    const { username } = req.body
     try {
-        const result = await User.findAll({ where: {username: 'email@email.com'}, include: Character });
+        const result = await getCharByUser(username);
         return res.json(result)
     } catch (error) {
-        return res.send(error)
+        return res.json({error: error.message})
     }
 })
 

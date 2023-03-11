@@ -1,10 +1,9 @@
 import { connect } from "react-redux"
-import { FavCardDiv, FavCardLinkDetail, FavCardDivAvatar } from "./StyleFavorites"
-import { motion } from "framer-motion"
+import { FavCardDiv, FavCardLinkDetail, FavCardDivAvatar, FavDiv } from "./StyleFavorites"
 
 export function Favorites(props) {
     return(
-        <motion.div initial={{opacity: 0}} animate={{opacity:1}} exit={{opacity:0}}>
+        <FavDiv>
             {
                props.favorites && props.favorites.map(myFav =>
                     <FavCardDiv key={myFav.id}>
@@ -16,7 +15,7 @@ export function Favorites(props) {
                     </FavCardDiv>
                 )
             }
-        </motion.div>
+        </FavDiv>
     )
 }
 

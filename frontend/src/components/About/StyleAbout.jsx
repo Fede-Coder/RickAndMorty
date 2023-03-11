@@ -5,6 +5,7 @@ const DivAbout = styled(motion.div)`
     width: 60%;
     margin: 0 auto;
     background-color: beige;
+    min-height: 70vh;
 `
 
 export {

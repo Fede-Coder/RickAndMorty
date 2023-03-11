@@ -11,6 +11,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Login from './components/Login/Login';
 import { AnimatePresence } from 'framer-motion';
+import Footer from './components/Footer/Footer';
 
 function App () {
 
@@ -22,6 +23,7 @@ function App () {
   const [access, setAccess] = React.useState(false);
   const username = 'email@email.com';
   const password = '1password';
+  const name = 'Fede'
 
 
   // const onSearch = (id) => {
@@ -69,6 +71,7 @@ function App () {
     if(userData.password === password && userData.username === username) {
       setAccess(true);
       localStorage.setItem('access', JSON.stringify(true))
+      localStorage.setItem('userdata', JSON.stringify({username, password, name}))
       navigate('/home');      
       notify('Has iniciado correctamente!')
     } else {
@@ -82,6 +85,7 @@ function App () {
   }
 
   React.useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem('userdata')));
     !JSON.parse(localStorage.getItem('access')) && navigate('/')
   }, [access, navigate]);
 
@@ -99,6 +103,7 @@ function App () {
           <Route path='/favorites' element={<Favorites />} />
         </Routes>
       </AnimatePresence>
+      <Footer/>
       
       
     </div>

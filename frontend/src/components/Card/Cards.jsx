@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addCharacter, clearCharacter, filterGenderCharacters, orderCharacters, resetFilterCharacters, searchCharacters } from '../../redux/actions/CharacterAction';
 import Card from './Card';
-import { CardsDivMain, CardsDivBar, CardsDivAddChar, CardsDivFilter, CardsDivSearch, CardsInput, CardsButton, CardsSelect } from './StyleCards';
+import { CardsDivMain, CardsDivBar, CardsDivAddChar, CardsDivFilter, CardsDivSearch, CardsInput, CardsButton, CardsSelect, CardsDivButton, CardsEmpty, CardsSvg } from './StyleCards';
+import ohNo from '../../assets/img/ohNo.json'
 
 export function Cards(props) {
    const [input, setInput] = React.useState({
@@ -71,9 +72,11 @@ export function Cards(props) {
          <CardsDivBar>
             <CardsDivAddChar>
                <CardsInput placeholder={'Id'} name={'add'} onChange={handleOnChange}/>
-               <CardsButton onClick={() => handleOnClickAddChar(input.add)} ><i className="fa-solid fa-user-plus"></i></CardsButton>
-               <CardsButton onClick={() => handleOnClickAddChar(generateUniqueRandom())}><i className="fa-solid fa-shuffle"></i></CardsButton>
-               <CardsButton bgRed onClick={() => handleClearCharacter()}><i className="fa-regular fa-trash-can"></i></CardsButton>
+               <CardsDivButton>
+                  <CardsButton onClick={() => handleOnClickAddChar(input.add)} ><i className="fa-solid fa-user-plus"></i></CardsButton>
+                  <CardsButton onClick={() => handleOnClickAddChar(generateUniqueRandom())}><i className="fa-solid fa-shuffle"></i></CardsButton>
+                  <CardsButton bgRed onClick={() => handleClearCharacter()}><i className="fa-regular fa-trash-can"></i></CardsButton>
+               </CardsDivButton>
             </CardsDivAddChar>
             <CardsDivFilter>
                <CardsSelect onChange={handleOrder}>
@@ -89,17 +92,27 @@ export function Cards(props) {
                   <option value={'Unknown'}>Desconocido</option>
                </CardsSelect>
                {/* <CardsButton><i className="fa-solid fa-filter"></i></CardsButton> */}
-               <CardsButton onClick={() => handleResetFilter()}><i className="fa-solid fa-rotate"></i></CardsButton>
+               <CardsDivButton>
+                  <CardsButton onClick={() => handleResetFilter()}><i className="fa-solid fa-rotate"></i></CardsButton>
+               </CardsDivButton>
             </CardsDivFilter>
             <CardsDivSearch>
                <CardsInput placeholder={'Buscar...'} name={'search'} onChange={handleOnChange}/>
-               <CardsButton onClick={() => handleSearchCharacter(input.search)}><i className="fa-solid fa-magnifying-glass"></i></CardsButton>
+               <CardsDivButton>                  
+                  <CardsButton onClick={() => handleSearchCharacter(input.search)}><i className="fa-solid fa-magnifying-glass"></i></CardsButton>
+               </CardsDivButton>
             </CardsDivSearch>
          </CardsDivBar>
          {
-            props.characters && props.characters.map((character, index) => 
+            props.characters.length > 0 ?
+            props.characters.map((character, index) => 
                <Card key={index} id={character.id} name={character.name} species={character.species} gender={character.gender} image={character.image}/>
             )
+            :
+            <CardsEmpty>
+               <h1>Oh no! No hay personajes añadidos.</h1>
+               <CardsSvg play loop={0} animateData={ohNo}></CardsSvg>
+            </CardsEmpty>
          }
       </CardsDivMain>
    );

@@ -3,11 +3,13 @@ import styled from "styled-components";
 import notFound from '../../assets/img/notFound1.json'
 
 const NotFoundDiv = styled.div`
-    background: #7777777a;
+    background-color: #dfdfdf;
     border-radius: 10px;
     width: 50%;
     margin: 0 auto;
     margin-bottom: 10px;
+    border-bottom: 5px solid #a8a8a8;
+    color: #757575;
    
    @media (max-width: 600px) {
        width: 80%;
@@ -19,7 +21,7 @@ const NotFoundDiv = styled.div`
 `
 
 const NotFoundH1 = styled.h1`
-    color: white;
+    color: #757575;
     margin-bottom: -30px;
 `
 

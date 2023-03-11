@@ -27,7 +27,9 @@ export const DEL_CHAR_FAVORITE = 'DEL_CHAR_FAVORITE';
 //Limpiar todos personajes favoritos
 export const CLEAR_CHAR_FAVORITE = 'CLEAR_CHAR_FAVORITE'
 
-//Muy pronto
+//Login
 export const LOGIN_REQUEST = 'LOGIN_REQUEST'
 export const LOGGED_IN_SUCCESS = 'LOGGED_IN_SUCCESS';
 export const LOGGED_IN_FAIL = 'LOGGED_IN_FAIL';
+
+//Register

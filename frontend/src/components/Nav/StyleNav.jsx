@@ -9,7 +9,6 @@ const DivNav = styled.div`
     padding: 10px 0;
     border-radius: 0px 0px 15px 15px;
     border-bottom: 5px solid #b3b3b3;
-
 `
 
 const DivMenu = styled.div`
@@ -98,9 +97,9 @@ const NavResponsiveBtn = styled.button`
 const NavMenuResponsive = styled.div`
     background-color: #575757;
     position: absolute;
-    left: 0;
-    top: calc(0% + 90px);
-    border-radius: 0 0 10px 0;
+    left: calc(0% + 10px);
+    top: calc(0% + 75px);
+    border-radius: 0 0 10px 10px;
     transition: ${props => props.active ? 'visibility 0s' : 'visibility 0.2s'}, opacity 0.2s linear;
     visibility: ${props => props.active ? 'visible' : 'hidden'};
     opacity: ${props => props.active ? '1' : '0'};
@@ -129,7 +128,7 @@ const NavLinkResponsive = styled(NavLink)`
     }
     
     &:last-child {
-        border-radius: 0 0 10px 0;
+        border-radius: 0 0 10px 10px;
     }
 `
 
